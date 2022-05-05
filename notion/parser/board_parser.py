@@ -5,7 +5,7 @@ from notion.structure.board_page import BoardPage
 def parse_board(database_id):
     board_list = []
 
-    board_json = __request_board(database_id)
+    board_json = _request_board()
     results = board_json.get("results")
 
     # print(json.dumps(board_json))
