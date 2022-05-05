@@ -36,7 +36,13 @@ def _parse_bulleted_block(block_json):
 
     return BulletedBlock(False, id, has_children, text)
 
+        annotations = block_json.get("bulleted_list_item").get("text")[0].get("annotations")
+        bold = annotations.get("bold")
+        italic = annotations.get("italic")
+        strikethrough = annotations.get("strikethrough")
+        underline = annotations.get("underline")
 
+        return BulletedBlock(False, id, has_children, text, bold, italic, strikethrough, underline)
 
 
 def _request_bulleted_block(block_id):
