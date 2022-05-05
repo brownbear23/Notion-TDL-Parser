@@ -41,7 +41,10 @@ def parse_board(database_id):
         else:
             due_date = page.get("properties").get("Due date").get("date").get("start")
 
-        temp_board_page = BoardPage(id, tdl_field, urgency, due_date, title)
+        # get root_bulleted_block
+        root_bulleted_block = block_parser.parse_all_bulleted_blocks(BulletedBlock(True, id, True, None))
+
+        temp_board_page = BoardPage(id, tdl_field, urgency, due_date, title, root_bulleted_block)
 
         board_list.append(temp_board_page)
 
