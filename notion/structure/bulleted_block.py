@@ -1,5 +1,3 @@
-
-
 class BulletedBlock:
 
     def __init__(self, root, id, has_children, text, bold=False, italic=False, strikethrough=False, underline=False):
@@ -15,15 +13,5 @@ class BulletedBlock:
 
         self.children = []
 
-
-
-
-
     def insert(self, child_node):
         self.children.append(child_node)
-
-    def get_data(self):
-        return self.data
-    
-    def get_child(self):
-        return self.children

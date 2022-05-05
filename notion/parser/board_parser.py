@@ -1,8 +1,13 @@
-import requests, json
-from notion import constants
-from notion.structure.board_page import BoardPage
+import json
+import requests
 
-def parse_board(database_id):
+from notion.constants import NotionConstants
+from notion.parser import block_parser
+from notion.structure.board_page import BoardPage
+from notion.structure.bulleted_block import BulletedBlock
+
+
+def parse_board():
     board_list = []
 
     board_json = _request_board()
@@ -15,16 +20,18 @@ def parse_board(database_id):
 
     for page in results:
         if not page.get("object") == "page":
-           raise RuntimeError("Object is not \"page\".") 
+            raise RuntimeError("Object is not \"page\".")
 
+        # get id
         id = page.get("id")
 
+        # get title
         if len(page.get("properties").get("Name").get("title")) == 0:
-            raise RuntimeError("Object has no title.") 
+            raise RuntimeError("Object has no title.")
         title = page.get("properties").get("Name").get("title")[0].get("plain_text")
 
-
-        if page.get("properties").get("TDL field").get("select") == None:
+        # get tdl_field
+        if page.get("properties").get("TDL field").get("select") is None:
             tdl_field = "Other"
         else:
             tdl_field = page.get("properties").get("TDL field").get("select").get("name")
@@ -43,8 +50,8 @@ def parse_board(database_id):
             else:
                 raise RuntimeError("Object has new Urgency.")
 
-
-        if page.get("properties").get("Due date").get("date") == None:
+        # get due_date
+        if page.get("properties").get("Due date").get("date") is None:
             due_date = None
         else:
             due_date = page.get("properties").get("Due date").get("date").get("start")
@@ -88,13 +95,5 @@ def _request_board():
     return json.loads(response.text)
 
 
-
-
-
 if __name__ == "__main__":
-    pass 
-
-
-
-
-
+    pass
