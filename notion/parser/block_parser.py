@@ -1,6 +1,6 @@
 from unittest import result
 import requests, json
-from notion import constants
+from notion.constants import NotionConstants
 from notion.structure.bulleted_block import BulletedBlock
 
 
@@ -54,7 +54,7 @@ def __request_bulleted_block( block_id):
         "Accept": "application/json",
         "Notion-Version": "2021-08-16",
         "Content-Type": "application/json",
-        "Authorization": "{autherization}".format(autherization=constants.autherization)
+        "Authorization": "{autherization}".format(autherization=NotionConstants.autherization)
     }
 
 

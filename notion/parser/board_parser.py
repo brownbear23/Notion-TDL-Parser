@@ -48,12 +48,8 @@ def parse_board(database_id):
     return board_list
 
 
-
-
-
-
-def __request_board(database_id):
-    url = "https://api.notion.com/v1/databases/{database_id}/query".format(database_id=database_id)
+def _request_board():
+    url = "https://api.notion.com/v1/databases/{database_id}/query".format(database_id=NotionConstants.database_id)
 
     payload = {
         "page_size": 100,
@@ -73,7 +69,7 @@ def __request_board(database_id):
         "Accept": "application/json",
         "Notion-Version": "2021-08-16",
         "Content-Type": "application/json",
-        "Authorization": "{autherization}".format(autherization=constants.autherization)
+        "Authorization": "{autherization}".format(autherization=NotionConstants.autherization)
     }
 
     response = requests.request("POST", url, json=payload, headers=headers)
