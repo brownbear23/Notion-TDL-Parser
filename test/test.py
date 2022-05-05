@@ -1,6 +1,6 @@
-import requests, json
+import requests
 
-autherization = "secret_RySJ7IpnyDR3wbCk6rLG5MFxr263gxEPz1LbtQxhaLw"
+authorization = "secret_RySJ7IpnyDR3wbCk6rLG5MFxr263gxEPz1LbtQxhaLw"
 database_id = "48e88dbf8cef4d01b7a47474c35e0f07"
 block_id = "9eed2c03-6eb5-44b1-9b82-88969df6cdcb"
 # block_id = "6029f117-c889-45fc-9e97-c5c83e719081"
@@ -11,7 +11,7 @@ headers = {
     "Accept": "application/json",
     "Notion-Version": "2021-08-16",
     "Content-Type": "application/json",
-    "Authorization": "{autherization}".format(autherization=autherization)
+    "Authorization": "{authorization}".format(authorization=authorization)
 }
 
 

@@ -51,7 +51,7 @@ def _request_bulleted_block(block_id):
         "Accept": "application/json",
         "Notion-Version": "2021-08-16",
         "Content-Type": "application/json",
-        "Authorization": "{autherization}".format(autherization=NotionConstants.autherization)
+        "Authorization": "{authorization}".format(authorization=NotionConstants.authorization)
     }
 
     response = requests.request("GET", url, headers=headers)

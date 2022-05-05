@@ -87,7 +87,7 @@ def _request_board():
         "Accept": "application/json",
         "Notion-Version": "2021-08-16",
         "Content-Type": "application/json",
-        "Authorization": "{autherization}".format(autherization=NotionConstants.autherization)
+        "Authorization": "{authorization}".format(authorization=NotionConstants.authorization)
     }
 
     response = requests.request("POST", url, json=payload, headers=headers)
