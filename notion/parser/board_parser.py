@@ -29,11 +29,19 @@ def parse_board(database_id):
         else:
             tdl_field = page.get("properties").get("TDL field").get("select").get("name")
 
-
-        if page.get("properties").get("Urgency").get("select") == None:
-            urgency = None
+        # get urgency
+        if page.get("properties").get("Urgency").get("select") is None:
+            urgency = 0
         else:
-            urgency = page.get("properties").get("Urgency").get("select").get("name")
+            urgency_text = page.get("properties").get("Urgency").get("select").get("name")
+            if urgency_text == "urgent lv1":
+                urgency = 1
+            elif urgency_text == "urgent lv2":
+                urgency = 2
+            elif urgency_text == "urgent lv3":
+                urgency = 3
+            else:
+                raise RuntimeError("Object has new Urgency.")
 
 
         if page.get("properties").get("Due date").get("date") == None:
