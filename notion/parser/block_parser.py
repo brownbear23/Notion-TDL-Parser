@@ -30,11 +30,10 @@ def _parse_bulleted_block(block_json):
     has_children = block_json.get("has_children")
 
     if len(block_json.get("bulleted_list_item").get("text")) == 0:
-        text = "-"
+        text = ""
+        return BulletedBlock(False, id, has_children, text)
     else:
-        text = "- " + block_json.get("bulleted_list_item").get("text")[0].get("plain_text")
-
-    return BulletedBlock(False, id, has_children, text)
+        text = block_json.get("bulleted_list_item").get("text")[0].get("plain_text")
 
         annotations = block_json.get("bulleted_list_item").get("text")[0].get("annotations")
         bold = annotations.get("bold")
