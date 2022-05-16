@@ -1,6 +1,6 @@
 from docx import Document
 from docx.enum.text import WD_COLOR_INDEX
-from docx.shared import Pt
+from docx.shared import Pt, Cm
 from notion.ms_word_writer.util import time_util
 from notion.constants import DocConstants
 from docx.oxml.ns import qn
@@ -18,6 +18,10 @@ def tdl_writer(template_docx_dir, doc_name, board_list):
             current_tdl_field = board.tdl_field
         _add_task_bullet_list(document, board.title, board.due_date, 20, board.urgency)
         _add_bullet_list(document, board.root_bulleted_block, 20, 2)
+
+    _add_paragraph(document, "", 22, True)
+
+    document.add_picture('/Users/billhan/Desktop/Dev/Notion-TDL-Parser/notion/ms_word_writer/calendar.png', width=Cm(18.5))
 
     document.save(doc_name + '.docx')
 
