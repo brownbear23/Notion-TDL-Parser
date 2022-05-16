@@ -3,8 +3,8 @@ from docx.shared import Pt
 
 ### Notion related constants
 class NotionConstants:
-    authorization = "your authorization token"
-    database_id = "9f21bb21b21b44c48d81d082ec605f37"  # real
+    authorization = "{your_authorization_token}"
+    database_id = "{your_db_id}"
 
 
 ### Word document related constants
