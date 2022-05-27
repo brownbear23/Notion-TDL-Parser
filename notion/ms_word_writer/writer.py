@@ -19,7 +19,9 @@ def tdl_writer(template_docx_dir, doc_name, board_list):
         _add_task_bullet_list(document, board.title, board.due_date, 20, board.urgency)
         _add_bullet_list(document, board.root_bulleted_block, 20, 2)
 
-    _add_paragraph(document, "", 22, True)
+    _add_paragraph(document, "", 35, True)
+    _add_paragraph(document, "", 35, True)
+    _add_paragraph(document, "", 35, True)
 
     document.add_picture('/Users/billhan/Desktop/Dev/Notion-TDL-Parser/notion/ms_word_writer/calendar.png', width=Cm(18.5))
 
@@ -81,12 +83,12 @@ def _add_task_bullet_list(document, title, due_date, font_size, urgent_lv):
     if due_date is not None:
         run = paragraph.add_run()
         run.bold = True
-        run.italic = True
+        run.italic = False
         run.font.size = Pt(font_size)
         run.font.name = DocConstants.font_name
         run.font.highlight_color = highlight_color
         date_time_obj = time_util.get_date_time(due_date)
-        date_time_str = date_time_obj.strftime("%b %d (%a) %H:%M")
+        date_time_str = date_time_obj.strftime("%m%d (%a) %H:%M")
 
         if "00:00" in date_time_str:
             date_time_str = date_time_str.replace("00:00", "")
