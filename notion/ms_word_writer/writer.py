@@ -29,8 +29,6 @@ def tdl_writer(template_docx_dir, doc_name, board_list):
     document.save(doc_name + '.docx')
 
 
-
-
 def _add_paragraph(document, content, size, bold):
     paragraph = document.add_paragraph()
 
@@ -68,7 +66,6 @@ def _add_task_bullet_list(document, title, due_date, font_size, urgent_lv):
 
     run.text = "➤   "
 
-
     run = paragraph.add_run()
     if "ASAP" in title:
         run.font.bold = True
@@ -95,9 +92,6 @@ def _add_task_bullet_list(document, title, due_date, font_size, urgent_lv):
             date_time_str = date_time_str.replace("00:00", "")
 
         run.text = " - " + date_time_str
-
-
-
 
 
 def _add_bullet_list(document, bulleted_block, font_size, indent_lv):
@@ -134,12 +128,6 @@ def _add_bullet_list(document, bulleted_block, font_size, indent_lv):
     if bulleted_block.has_children:
         for child_bulleted_block in bulleted_block.children:
             _add_bullet_list(document, child_bulleted_block, font_size, indent_lv)
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
