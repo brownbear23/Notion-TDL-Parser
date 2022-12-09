@@ -1,13 +1,13 @@
 from docx.shared import Pt
 
 
-### Notion related constants
+# Notion related constants
 class NotionConstants:
     authorization = "{your_authorization_token}"
     database_id = "{your_db_id}"
 
 
-### Word document related constants
+# Word document related constants
 class DocConstants:
     font_name = "Times New Roman"
     # font_name = "Dotum"

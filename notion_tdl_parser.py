@@ -11,6 +11,6 @@ board_list = board_parser.parse_board()
 
 write_dir = sys.argv[1]
 writer.tdl_writer(tdl_template_doc_dir, write_dir+"/"+doc_name, board_list)
-
+print("Done!")
 
 
