@@ -23,7 +23,8 @@ def tdl_writer(template_docx_dir, doc_name, board_list):
     _add_paragraph(document, "", 35, True)
     _add_paragraph(document, "", 35, True)
 
-    document.add_picture('/Users/billhan/Desktop/Dev/Notion-TDL-Parser/notion/ms_word_writer/calendar.png', width=Cm(18.5))
+    document.add_picture('/Users/billhan/Desktop/Dev/Notion/Notion-TDL-Parser/notion/ms_word_writer/calendar.png',
+                         width=Cm(18.5))
 
     document.save(doc_name + '.docx')
 
