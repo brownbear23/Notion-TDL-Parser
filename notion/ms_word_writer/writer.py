@@ -110,18 +110,19 @@ def _add_bullet_list(document, bulleted_block, font_size, indent_lv):
         run.font.name = DocConstants.font_name
         run.text = "•   "
 
-        run = paragraph.add_run()
-        run.font.size = Pt(font_size)
-        run.font.name = DocConstants.font_name
+        for text in bulleted_block.texts:
+            run = paragraph.add_run()
+            run.font.size = Pt(font_size)
+            run.font.name = DocConstants.font_name
 
-        run.text = bulleted_block.text
+            run.text = text.text
 
-        run._element.rPr.rFonts.set(qn('w:eastAsia'), 'Dotum')
+            run._element.rPr.rFonts.set(qn('w:eastAsia'), 'Dotum')
 
-        run.font.bold = bulleted_block.bold
-        run.font.italic = bulleted_block.italic
-        run.font.strike = bulleted_block.strikethrough
-        run.font.underline = bulleted_block.underline
+            run.font.bold = text.bold
+            run.font.italic = text.italic
+            run.font.strike = text.strikethrough
+            run.font.underline = text.underline
 
         indent_lv += 1
 

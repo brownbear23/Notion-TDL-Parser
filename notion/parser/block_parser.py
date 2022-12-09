@@ -2,6 +2,7 @@ from unittest import result
 import requests, json
 from notion.constants import NotionConstants
 from notion.structure.bulleted_block import BulletedBlock
+from notion.structure.text import Text
 
 
 def parse_all_bulleted_blocks(parent_block):
@@ -28,20 +29,18 @@ def parse_all_bulleted_blocks(parent_block):
 def _parse_bulleted_block(block_json):
     id = block_json.get("id")
     has_children = block_json.get("has_children")
+    texts = []
+    if not len(block_json.get("bulleted_list_item").get("text")) == 0:
+        text_block_list = block_json.get("bulleted_list_item").get("text")
+        for text_block in text_block_list:
+            text = text_block.get("plain_text")
+            bold = text_block.get("annotations").get("bold")
+            italic = text_block.get("annotations").get("italic")
+            strikethrough = text_block.get("annotations").get("strikethrough")
+            underline = text_block.get("annotations").get("underline")
+            texts.append(Text(text, bold, italic, strikethrough, underline))
 
-    if len(block_json.get("bulleted_list_item").get("text")) == 0:
-        text = ""
-        return BulletedBlock(False, id, has_children, text)
-    else:
-        text = block_json.get("bulleted_list_item").get("text")[0].get("plain_text")
-
-        annotations = block_json.get("bulleted_list_item").get("text")[0].get("annotations")
-        bold = annotations.get("bold")
-        italic = annotations.get("italic")
-        strikethrough = annotations.get("strikethrough")
-        underline = annotations.get("underline")
-
-        return BulletedBlock(False, id, has_children, text, bold, italic, strikethrough, underline)
+        return BulletedBlock(False, id, has_children, texts)
 
 
 def _request_bulleted_block(block_id):
