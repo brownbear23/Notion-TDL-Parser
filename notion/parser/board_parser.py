@@ -79,6 +79,14 @@ def _request_board():
             {
                 "property": "Due date",
                 "direction": "ascending"
+            },
+            {
+                "property": "Urgency",
+                "direction": "ascending"
+            },
+            {
+                "property": "Name",
+                "direction": "ascending"
             }
         ]
     }
